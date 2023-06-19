@@ -12,9 +12,6 @@
         android:theme="@style/Theme.Hafiz_Quran_Record"
         tools:targetApi="31">
         <activity
-            android:name=".DeleteStudent"
-            android:exported="false" />
-        <activity
             android:name=".SearchStudent"
             android:exported="false" />
         <activity
