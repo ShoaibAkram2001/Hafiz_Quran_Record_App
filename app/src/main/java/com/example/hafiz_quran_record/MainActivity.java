@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
     Button AddBtn;
     Button ShowBtn;
     Button SearchBtn;
-    Button DeleteBtn;
+
     Button GithubBtn;
 
     @Override
@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
         AddBtn=findViewById(R.id.addBtn);
         ShowBtn=findViewById(R.id.showBtn);
         SearchBtn=findViewById(R.id.searchBtn);
-        DeleteBtn=findViewById(R.id.deleteBtn);
         GithubBtn=findViewById(R.id.githubBtn);
 
         // go AddStudent
@@ -48,15 +47,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        // go deleteStudent
-        DeleteBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent deleteIntent=new Intent(MainActivity.this,DeleteStudent.class);
-                startActivity(deleteIntent);
-            }
-        });
 
         // go SearchStudent
         SearchBtn.setOnClickListener(new View.OnClickListener() {
