@@ -1,18 +1,14 @@
 package com.example.hafiz_quran_record;
+import androidx.appcompat.app.AppCompatActivity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatActivity;
 import java.lang.Integer;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
+
 import android.widget.EditText;
 import android.widget.ListView;
-
-import java.util.List;
-import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class AddStudent extends AppCompatActivity {
 
@@ -42,15 +38,19 @@ public class AddStudent extends AppCompatActivity {
                 String name = etName.getText().toString();
                 String rollNo = etRollNo.getText().toString();
                 String Class = etClass.getText().toString();
-                String ag=etAge.getText().toString();
-                int Age  = Integer.parseInt(ag);
+                String Age  = etAge.getText().toString();
 
-               /* if (name.isEmpty() || rollNo.isEmpty()) {
-                    //Toast.makeText(MainActivity.this, "Please enter valid data", Toast.LENGTH_SHORT).show();
-                    //return;
-                }*/
-                Student student = new Student(name, rollNo, Age,Class);
+                if (name.isEmpty() || rollNo.isEmpty()||Class.isEmpty()||Age.isEmpty()) {
+                    Toast.makeText(AddStudent.this, "Please Fill all the fields ", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
+                Student student = new Student(name, rollNo,Integer.parseInt(Age),Class);
                 db.insertStudent(student);
+
+                Toast.makeText(AddStudent.this, "Student Record has been submitted ", Toast.LENGTH_SHORT).show();
+
 
             }
         });

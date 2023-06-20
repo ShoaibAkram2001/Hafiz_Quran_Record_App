@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     Button SearchBtn;
 
     Button GithubBtn;
+    Button DailyBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         ShowBtn=findViewById(R.id.showBtn);
         SearchBtn=findViewById(R.id.searchBtn);
         GithubBtn=findViewById(R.id.githubBtn);
+        DailyBtn=findViewById(R.id.dailyTaskBtn);
 
         // go AddStudent
         AddBtn.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +59,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // go DailyTaskActivity
+        DailyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent TaskIntent=new Intent(MainActivity.this,DailyTask.class);
+                startActivity(TaskIntent);
+
+            }
+        });
+
+
+
         // go Github
         GithubBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
                 goToGithub("https://github.com/ShoaibAkram2001/Hafiz_Quran_Record_App.git");
             }
         });
+
+
     }
 
     public void goToGithub(String s)

@@ -75,7 +75,7 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
 
-    public List<Student> selectAllStudents() {
+   /* public List<Student> selectAllStudents() {
         List<Student> students = new ArrayList<>();
 
         String sql = "SELECT * FROM " + TABLE_NAME;
@@ -83,17 +83,16 @@ public class DbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
 
-        /*
-        * if (cursorCourses.moveToFirst()) {
+
+        if (cursor.moveToFirst()) {
             do {
 
-                studentArrayList.add(new StudentModel(cursorCourses.getString(1),
-                      cursorCourses.getInt(2),
-                        cursorCourses.getInt(3) == 1 ? true : false));
-            } while (cursorCourses.moveToNext());
+                students.add(new StudentModel(cursor.getString(1),
+                      cursor.getInt(2),
+                        cursor.getInt(3) == 1 ? true : false));
+            } while (cursor.moveToNext());
 
         }
-        * */
 
         if (cursor.moveToFirst()) {
             do {
@@ -109,5 +108,5 @@ public class DbHelper extends SQLiteOpenHelper {
         db.close();
 
         return students;
-    }
+    }*/
 }
