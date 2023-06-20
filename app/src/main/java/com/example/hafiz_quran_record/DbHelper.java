@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
 
     public DbHelper(Context context) {
+
         super(context, DATABASE_NAME, null, 1);
     }
 
@@ -75,38 +77,29 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
 
-   /* public List<Student> selectAllStudents() {
+    public List<Student> selectAllStudents() {
         List<Student> students = new ArrayList<>();
 
         String sql = "SELECT * FROM " + TABLE_NAME;
 
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
-
-
+    if(cursor!=null) {
         if (cursor.moveToFirst()) {
             do {
-
-                students.add(new StudentModel(cursor.getString(1),
-                      cursor.getInt(2),
-                        cursor.getInt(3) == 1 ? true : false));
-            } while (cursor.moveToNext());
-
-        }
-
-        if (cursor.moveToFirst()) {
-            do {
-                @SuppressLint("Range") int age = cursor.getInt(cursor.getColumnIndex(COLUMN_AGE));
+                @SuppressLint("Range") String age = cursor.getString(cursor.getColumnIndex(COLUMN_AGE));
                 @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
-                @SuppressLint("Range")  String rollNo = cursor.getString(cursor.getColumnIndex(COLUMN_ROLLNo));
-                @SuppressLint("Range")  String Class = cursor.getString(cursor.getColumnIndex(COLUMN_CLASS));
-                students.add(new Student(name, rollNo, age,Class));
+                @SuppressLint("Range") String rollNo = cursor.getString(cursor.getColumnIndex(COLUMN_ROLLNo));
+                @SuppressLint("Range") String Class = cursor.getString(cursor.getColumnIndex(COLUMN_CLASS));
+                Log.d("Student", "RollNo: " + rollNo + ", Name: " + name + ", Age: " + age+ ", Age: "+Class);
+                students.add(new Student(name, rollNo, age, Class));
             } while (cursor.moveToNext());
         }
 
         cursor.close();
+    }
         db.close();
 
         return students;
-    }*/
+    }
 }

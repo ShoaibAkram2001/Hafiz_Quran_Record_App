@@ -1,7 +1,7 @@
 package com.example.hafiz_quran_record;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.lang.Integer;
+
 import android.os.Bundle;
 import android.view.View;
 
@@ -30,31 +30,32 @@ public class AddStudent extends AppCompatActivity {
         etClass = findViewById(R.id.editTextTextPersonName4);
         adBtn = findViewById(R.id.button2);
 
-        db = new DbHelper(this);
-
-        adBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String name = etName.getText().toString();
-                String rollNo = etRollNo.getText().toString();
-                String Class = etClass.getText().toString();
-                String Age  = etAge.getText().toString();
-
-                if (name.isEmpty() || rollNo.isEmpty()||Class.isEmpty()||Age.isEmpty()) {
-                    Toast.makeText(AddStudent.this, "Please Fill all the fields ", Toast.LENGTH_SHORT).show();
-                    return;
-                }
 
 
-                Student student = new Student(name, rollNo,Integer.parseInt(Age),Class);
-                db.insertStudent(student);
+     db = new DbHelper(this);
 
-                Toast.makeText(AddStudent.this, "Student Record has been submitted ", Toast.LENGTH_SHORT).show();
+     adBtn.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View view) {
+             String name = etName.getText().toString();
+             String rollNo = etRollNo.getText().toString();
+             String Class = etClass.getText().toString();
+             String Age = etAge.getText().toString();
+
+             if (name.isEmpty() || rollNo.isEmpty() || Class.isEmpty()||Age.isEmpty()) {
+                 Toast.makeText(AddStudent.this, "Please Fill all the fields ", Toast.LENGTH_SHORT).show();
+                 return;
+             }
 
 
-            }
-        });
+             Student student = new Student(name, rollNo, Age, Class);
+             db.insertStudent(student);
 
+             Toast.makeText(AddStudent.this, "Student Record has been submitted ", Toast.LENGTH_SHORT).show();
+
+
+         }
+     });
 
 
     }

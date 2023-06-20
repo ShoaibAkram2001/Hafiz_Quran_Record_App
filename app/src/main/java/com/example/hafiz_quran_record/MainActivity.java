@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent showIntent=new Intent(MainActivity.this,ShowStudents.class);
-
                 startActivity(showIntent);
 
             }

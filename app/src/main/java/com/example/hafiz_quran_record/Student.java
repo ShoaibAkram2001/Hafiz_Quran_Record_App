@@ -4,10 +4,10 @@ public class Student {
     private String name;
     private String rollNo;
 
-    private int Age;
+    private String Age;
     private String Class;
 
-    public Student(String name, String rollNo, int Age,String Class) {
+    public Student(String name, String rollNo, String Age,String Class) {
         this.name = name;
         this.rollNo = rollNo;
         this.Age=Age;
@@ -27,7 +27,7 @@ public class Student {
         this.Class= Class;
     }
 
-    public int getAge() {
+    public String getAge() {
         return Age;
     }
 
@@ -44,7 +44,7 @@ public class Student {
     }
 
 
-    public void setAge(int Age) {
+    public void setAge(String Age) {
         this.Age = Age;
     }
 
