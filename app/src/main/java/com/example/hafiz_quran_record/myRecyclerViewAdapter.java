@@ -30,9 +30,8 @@ class myRecyclerViewAdapter extends RecyclerView.Adapter<myRecyclerViewAdapter.M
     public void onBindViewHolder(@NonNull myRecyclerViewAdapter.MyVH holder, int position) {
         holder.data=StudentsList.get(position);
         holder.StudentName.setText(holder.data.getName());
-        holder.StudentRollNo.setText(String.valueOf(holder.data.getRollNo()));
-        holder.StudentAge.setText(holder.data.getAge());
-        holder.StudentClass.setText(holder.data.getClas());
+        holder.StudentRollNo.setText(holder.data.getRollNo());
+        holder.StudentAge.setText(String.valueOf(holder.data.getAge()));
 
     }
 

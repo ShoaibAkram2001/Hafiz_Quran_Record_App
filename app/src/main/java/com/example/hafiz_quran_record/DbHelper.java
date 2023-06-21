@@ -17,6 +17,7 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String TABLE_NAME = "students";
 
     private static final String COLUMN_NAME = "Name";
+    private static final String COLUMN_ID = "id";
     private static final String COLUMN_AGE = "Age";
     private static final String COLUMN_CLASS = "Class";
     private static final String COLUMN_ROLLNo = "Roll_No";
@@ -30,8 +31,9 @@ public class DbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "("
-                + COLUMN_ROLLNo + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_NAME + " TEXT,"
+                + COLUMN_ROLLNo + " TEXT UNIQUE,"
                 + COLUMN_AGE + " INTEGER,"
                 + COLUMN_CLASS + " TEXT"
                 + ")";
@@ -57,6 +59,39 @@ public class DbHelper extends SQLiteOpenHelper {
         db.insert(TABLE_NAME, null, values);
         db.close();
     }
+
+    // search Student
+
+
+   /* public List<Student> searchStudentsByRollNumber(String rollNumber) {
+        List<Student> studentList = new ArrayList<>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] projection = {COLUMN_NAME, COLUMN_CLASS, COLUMN_ROLLNo,COLUMN_AGE};
+        String selection = "Roll_No = ?";
+        String[] selectionArgs = {rollNumber};
+
+        Cursor cursor = db.query("students", projection, selection, selectionArgs, null, null, null);
+
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+
+                @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex("Name"));
+                @SuppressLint("Range") String className = cursor.getString(cursor.getColumnIndex("Class"));
+                @SuppressLint("Range") String rollNo = cursor.getString(cursor.getColumnIndex("Roll_No"));
+                @SuppressLint("Range") int age = cursor.getInt(cursor.getColumnIndex("Age"));
+
+                Student student = new Student( name, rollNo, age, className);
+                studentList.add(student);
+            }
+
+            cursor.close();
+        }
+
+        db.close();
+        return studentList;
+    }
+*/
 
     public void updateStudent(Student student) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -87,7 +122,7 @@ public class DbHelper extends SQLiteOpenHelper {
     if(cursor!=null) {
         if (cursor.moveToFirst()) {
             do {
-                @SuppressLint("Range") String age = cursor.getString(cursor.getColumnIndex(COLUMN_AGE));
+                @SuppressLint("Range") int age = cursor.getInt(cursor.getColumnIndex(COLUMN_AGE));
                 @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
                 @SuppressLint("Range") String rollNo = cursor.getString(cursor.getColumnIndex(COLUMN_ROLLNo));
                 @SuppressLint("Range") String Class = cursor.getString(cursor.getColumnIndex(COLUMN_CLASS));

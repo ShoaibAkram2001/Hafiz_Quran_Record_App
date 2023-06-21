@@ -2,6 +2,8 @@ package com.example.hafiz_quran_record;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.content.Intent;
+import android.database.sqlite.SQLiteConstraintException;
 import android.os.Bundle;
 import android.view.View;
 
@@ -31,18 +33,30 @@ public class AddStudent extends AppCompatActivity {
         adBtn = findViewById(R.id.button2);
 
 
+        db = new DbHelper(this);
 
-     db = new DbHelper(this);
+        adBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name = etName.getText().toString();
+                String rollNo = etRollNo.getText().toString();
+                String Class = etClass.getText().toString();
+                String Age = etAge.getText().toString();
 
-     adBtn.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View view) {
-             String name = etName.getText().toString();
-             String rollNo = etRollNo.getText().toString();
-             String Class = etClass.getText().toString();
-             String Age = etAge.getText().toString();
+                try {
+                    int ageValue = Integer.parseInt(Age);
+                    Student student = new Student(name, rollNo, ageValue, Class);
+                    db.insertStudent(student);
+                } catch (SQLiteConstraintException exc) {
+                    Toast.makeText(AddStudent.this, "Roll No already has been taken", Toast.LENGTH_LONG).show();
+                } catch (Exception e) {
+                    Toast.makeText(AddStudent.this, "Enter correct age", Toast.LENGTH_LONG).show();
+                }
+                Toast.makeText(AddStudent.this, "Student successfully Added", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(AddStudent.this, MainActivity.class);
+                startActivity(intent);
 
-             if (name.isEmpty() || rollNo.isEmpty() || Class.isEmpty()||Age.isEmpty()) {
+             /*if (name.isEmpty() || rollNo.isEmpty() || Class.isEmpty()||Age.isEmpty()) {
                  Toast.makeText(AddStudent.this, "Please Fill all the fields ", Toast.LENGTH_SHORT).show();
                  return;
              }
@@ -52,11 +66,11 @@ public class AddStudent extends AppCompatActivity {
              db.insertStudent(student);
 
              Toast.makeText(AddStudent.this, "Student Record has been submitted ", Toast.LENGTH_SHORT).show();
+*/
 
-
-         }
-     });
-
+            }
+        });
 
     }
+
 }

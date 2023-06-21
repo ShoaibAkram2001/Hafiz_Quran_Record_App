@@ -15,9 +15,6 @@
             android:name=".DailyTask"
             android:exported="false" />
         <activity
-            android:name=".SearchStudent"
-            android:exported="false" />
-        <activity
             android:name=".ShowStudents"
             android:exported="false" />
         <activity

@@ -4,46 +4,40 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import com.example.hafiz_quran_record.Student;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-@SuppressWarnings("ALL")
 public class ShowStudents extends AppCompatActivity {
-
-    List<Student> StudentsList = new ArrayList<>();
+    DbHelper dbHelper;
+    List<Student> friendsList;
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
     RecyclerView.LayoutManager layoutManager;
 
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        dbHelper = new DbHelper(this);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-
-        DbHelper DH1=new DbHelper(this);
-           List<Student> StdLists=DH1.selectAllStudents();
-
-        StudentsList.addAll(StdLists);
+        setContentView(R.layout.activity_show_students);
+        friendsList = dbHelper.selectAllStudents();
         recyclerView = findViewById(R.id.recylerViewStudent);
 
 
-      //  recyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(true);
 
-        //LinearLayoutManager GridLayoutManager
+
         layoutManager = new LinearLayoutManager(ShowStudents.this);
 
         recyclerView.setLayoutManager(layoutManager);
 
-        adapter = new myRecyclerViewAdapter(StudentsList) ;
+        adapter = new myRecyclerViewAdapter(friendsList) ;
         recyclerView.setAdapter(adapter);
-        //adapter.notifyDataSetChanged();
-
 
     }
 }

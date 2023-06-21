@@ -1,0 +1,71 @@
+package com.example.hafiz_quran_record;
+
+
+import java.util.Date;
+
+public class Task {
+    private String rollNo;
+    private String sabaq;
+    private String sabaqi;
+    private String manzil;
+    private String date;
+
+    public Task(String rollNo, String sabaq, String sabaqi, String manzil, String date) {
+        this.rollNo = rollNo;
+        this.sabaq = sabaq;
+        this.sabaqi = sabaqi;
+        this.manzil = manzil;
+        this.date = date;
+    }
+
+    public String getRollno() {
+        return rollNo;
+    }
+
+    public String getSabaq() {
+        return sabaq;
+    }
+
+    public String getSabaqi() {
+        return sabaqi;
+    }
+
+    public String getManzil() {
+        return manzil;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setRollno(String rollNo) {
+        this.rollNo = rollNo;
+    }
+
+    public void setSabaq(String sabaq) {
+        this.sabaq = sabaq;
+    }
+
+    public void setSabaqi(String sabaqi) {
+        this.sabaqi = sabaqi;
+    }
+
+    public void setManzil(String manzil) {
+        this.manzil = manzil;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "rollNo='" + rollNo + '\'' +
+                ", sabaq='" + sabaq + '\'' +
+                ", sabaqi='" + sabaqi + '\'' +
+                ", manzil='" + manzil + '\'' +
+                ", date=" + date +
+                '}';
+    }
+}
