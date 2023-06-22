@@ -50,13 +50,13 @@ public class MainActivity extends AppCompatActivity {
 
 
         // go SearchStudent
-      /*  SearchBtn.setOnClickListener(new View.OnClickListener() {
+        SearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent searchIntent=new Intent(MainActivity.this,SearchStudent.class);
                 startActivity(searchIntent);
             }
-        });*/
+        });
 
         // go DailyTaskActivity
         DailyBtn.setOnClickListener(new View.OnClickListener() {

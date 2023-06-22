@@ -29,7 +29,7 @@ public class ShowStudents extends AppCompatActivity {
         recyclerView = findViewById(R.id.recylerViewStudent);
 
 
-        recyclerView.setHasFixedSize(true);
+    //    recyclerView.setHasFixedSize(true);
 
 
         layoutManager = new LinearLayoutManager(ShowStudents.this);
